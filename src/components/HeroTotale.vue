@@ -11,7 +11,7 @@ defineProps({
   <div id="hero">
     <div class="title-hero">
       <h1>{{ title }}</h1> 
-      <h2> {{ subtitle }} </h2>
+      <p> {{ subtitle }} </p>
     </div>
       <div class="cta-scroll d-flex justify-content-center"> 
         <p class="cta"> {{ cta }} </p>
@@ -31,7 +31,7 @@ h1 {
   opacity: 80%;
 }
 
-h2 {
+p {
   text-align: center;
   padding: 0;
   font-weight: 200;
@@ -41,7 +41,9 @@ h2 {
   opacity: 80%;
 }
 
-
+.cta-scroll {
+  padding-top: 5%;
+}
 
 .cta {
   padding-top: 10px;

@@ -1,11 +1,10 @@
 <script setup>
-defineProps({
-})
+
 </script>
 
 <template>
-<nav class="navbar navbar-expand-lg d-flex justify-content-between">
-  <a class="navbar-brand d-flex p-3" href="#hero"> 
+<nav class="navbar fixed-top navbar-expand-lg d-flex justify-content-between align-items-center">
+  <a class="navbar-brand d-flex align-items-center px-3" href="#hero"> 
     <img class="logo" src="/images/logo-sake-travel.svg" width="30" height="30">
     <p class="px-2">SAKE TRAVEL</p>
   </a>
@@ -34,5 +33,18 @@ defineProps({
   color: #1f2326;
 }
 
+a {
+  color: #1f2326;
+}
+
+a:hover {
+  background-color: #c7ccd9;
+  color: #1f2326;
+}
+
+
+p {
+  margin-top: 10%;
+}
 
 </style>
