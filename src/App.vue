@@ -2,9 +2,11 @@
   import HeroTotale from './components/HeroTotale.vue';
   import Navbar from './components/Navbar.vue';
   import CardComponents from './components/CardComponents.vue';
-  import Contacts from './components/Contacts.vue';
+  import LinkAbout from './components/LinkAbout.vue';
+  import LinkFavourite from './components/LinkFavourite.vue';
+  import LinkContacts from './components/LinkContacts.vue';
 
-  import contentsData from './assets/contents.json';
+  import contentsData from './assets/Contents.json';
 
 export default {
   data() {
@@ -17,8 +19,10 @@ export default {
       CardComponents,
       HeroTotale,
       Navbar,
-      Contacts,
-    }, 
+      LinkAbout,
+      LinkFavourite,
+      LinkContacts,
+    },
   };
 </script>
 
@@ -28,7 +32,7 @@ export default {
   </header>
 
   <main>
-    <section class="section-hero">
+    <section class="section-hero" id="hero">
       <Navbar/>
         <div class="hero-background d-flex align-items-end justify-content-center">
           <HeroTotale
@@ -40,12 +44,12 @@ export default {
         </div>
     </section>
 
-    <section class="section-cards">
+    <section class="section-cards" id="discover">
 
         <h2 class="title-cards"> Six japanese city you can't miss </h2>
-          <SaveButton />
-      <div class="row justify-content-center" id="cards">
-        <div class="col-lg-4 col-md-6 colsm-12" v-for="card in contents.cards" :key="card.id">
+
+      <div class="row" id="cards">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" v-for="card in contents.cards" :key="card.id">
          <CardComponents
           :title="card.title"
           :description="card.description"
@@ -56,43 +60,53 @@ export default {
       </div>
     </section>
 
-    <section class="section-footer">
-       <div class="footer row p-3">
-          <div class="logo col">
-            <a class="logo-big d-flex flex-column align-items-center px-3" href="#hero"> 
+    <section class="section-footer" id="contacts">
+      <div class="footer row">
+          <div class="logo col-lg-3 col-md-12 col-sm-12 pb-5">
+            <a class="logo-big d-flex flex-column align-items-center" href="#hero"> 
                 <img class="img-logo" src="/images/logo-saketravel-white.svg" width="100" height="100">
-                <h2>SAKE TRAVEL</h2>
-                <h4 class="px-2">Your travel guide in Asia</h4>
+                <h2 class="p-2">SAKE TRAVEL</h2>
+                <h4>Your travel guide in Asia</h4>
             </a>
         </div>  
 
-        <div class="contacts col">
-          <Contacts
-          Title="TELL US YOUR EXPERIENCE"
-          Link1="https://www.google.com/"
-          Name1="Link1"
-          Link2="https://www.google.com/"
-          Name2="Link2"
-          Link3="https://www.google.com/"
-          Name3="Link3"
-          Link4="Link4"
-          Name4="https://www.google.com/"
-          />
+        <div class="favourites col-lg-3 col-md-4 col-sm-12 d-flex flex-column align-items-center pb-5">
+          <div class="container-footer">
+            <h4 class="text-start"> YOUR FAVOURITES </h4>
+            <div class="favourite-links" v-for="favourite in contents.favourites" :key="favourite.id">
+              <LinkFavourite
+                  :name="favourite.name"
+                  :url="favourite.url"
+                  />
+            </div>
+          </div>
+       </div>
+
+        <div class="about-us col-lg-3 col-md-4 col-sm-12 d-flex flex-column align-items-center pb-5">
+          <div class="container-footer">
+            <h4 class="text-start"> ABOUT US </h4>
+            <div class="about-us-links" v-for="about in contents.abouts" :key="about.id">
+              <LinkAbout
+                  :name="about.name"
+                  :url="about.url"
+                />
+            </div>
+          </div>  
         </div>
 
-        <div class="contacts col">
-          <Contacts
-          Title="OUR FAVOURITES"
-          Link1="https://www.google.com/"
-          Name1="Link1"
-          Link2="https://www.google.com/"
-          Name2="Link2"
-          Link3="https://www.google.com/"
-          Name3="Link3"
-          Link4="Link4"
-          Name4="https://www.google.com/"
-          />
+        <div class="contacts col-lg-3 col-md-4 col-sm-12 d-flex flex-column align-items-center pb-5">
+          <div class="container-footer">
+            <h4 class="text-start"> CONTACT US </h4>
+            <div class="contact-links" v-for="contact in contents.contacts" :key="contact.id">
+              <LinkContacts
+                  :name="contact.name"
+                  :url="contact.url"
+                  :icon="contact.icon"
+                />
+            </div>
+          </div>  
         </div>
+
       </div>
     </section>
    
@@ -134,6 +148,12 @@ export default {
     text-align: center;
 }
 
+.footer {
+  padding-top: 10%;
+  padding-bottom: 5%;
+  width: 100vw;
+}
+
 
 .section-footer h2 {
     font-weight: 400;
@@ -143,7 +163,7 @@ export default {
 }
 
 .section-footer h4 {
-    font-weight: 200;
+    font-weight: 400;
     font-size: 1.2rem;
     text-align: center;
     color: white;
@@ -152,4 +172,5 @@ export default {
 .section-footer a:hover {
     background-color: #1f2326;
 }
+
 </style>

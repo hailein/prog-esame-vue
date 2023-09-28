@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-  <div id="hero">
+  <div class="hero">
     <div class="title-hero">
       <h1>{{ title }}</h1> 
       <p> {{ subtitle }} </p>
@@ -51,6 +51,7 @@ p {
   font-size: 1.5rem;
   font-weight: 200;
   color: white;
+  opacity: 100%;
 }
 
 </style>
